@@ -30,12 +30,18 @@ var UserComponent = (function () {
             this.showHobbies = true;
         }
     };
+    UserComponent.prototype.addHobby = function (hobby) {
+        this.hobbies.push(hobby);
+    };
+    UserComponent.prototype.deleteHobby = function (i) {
+        this.hobbies.splice(i, 1);
+    };
     return UserComponent;
 }());
 UserComponent = __decorate([
     core_1.Component({
         selector: 'user',
-        template: "\n    <h1>Hello {{name}}</h1>\n    <p><strong>Email:</strong>  {{ email }}</p>\n    <p><strong>Address:</strong>  {{ address.street }} {{ address.city }} {{ address.state }}</p>\n    \n    \n    <button (click)=\"toggleHobbies()\">{{ showHobbies ? \"Hide Hobbies\" : \"Show Hobbies\" }}</button>\n    <div *ngIf=\"showHobbies\">\n        <h3>Hobbies</h3>\n        <ul>\n            <li *ngFor=\"let hobby of hobbies\">\n                {{ hobby }}\n            </li>\n        </ul>\n    </div>\n    ",
+        template: "\n    <h1>Hello {{ name }}</h1>\n    <p><strong>Email:</strong>  {{ email }}</p>\n    <p><strong>Address:</strong>  {{ address.street }} {{ address.city }} {{ address.state }}</p>\n    \n    \n    <button (click)=\"toggleHobbies()\">{{ showHobbies ? \"Hide Hobbies\" : \"Show Hobbies\" }}</button>\n    <div *ngIf=\"showHobbies\">\n        <h3>Hobbies</h3>\n        <ul>\n            <li *ngFor=\"let hobby of hobbies; let i = index\">\n                {{ hobby }} <button (click)=\"deleteHobby(i)\">X</button>\n            </li>\n        </ul>\n\n<form (submit)=\"addHobby(hobby.value)\">\n<label>Add Hobby: </label><br />\n<input type=\"text\" #hobby /><br />\n</form>\n    </div>\n    <hr />\n    <h3>Edit User</h3>\n    <form>\n        <label>Name:</label><br/>\n        <input type=\"text\" name=\"name\" [(ngModel)]=\"name\" /><br/>\n        <label>Email:</label><br/>\n                <input type=\"text\" name=\"email\" [(ngModel)]=\"email\" /><br/>\n        <label>Street:</label><br/>\n                <input type=\"text\" name=\"address.street\" [(ngModel)]=\"address.street\" /><br/>\n        <label>City:</label><br/>\n                <input type=\"text\" name=\"address.city\" [(ngModel)]=\"address.city\" /><br/>\n        <label>State:</label><br/>\n                <input type=\"text\" name=\"address.state\" [(ngModel)]=\"address.state\" /><br/>\n    </form>\n    ",
     }),
     __metadata("design:paramtypes", [])
 ], UserComponent);
