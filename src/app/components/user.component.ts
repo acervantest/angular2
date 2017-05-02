@@ -1,0 +1,21 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'user',
+  template: `
+    <h1>Hello {{name}}</h1>
+    <p><strong>Email:</strong>  {{ email }}</p>
+    <p><strong>Address:</strong>  {{ address.street }} {{ address.city }} {{ address.state }}</p>
+
+`,
+})
+
+export class UserComponent { 
+    name  = 'Alex'; 
+    email = 'acervantes@gmail.com';
+    address = {
+        street: '777 East Kings Rd',
+        city: 'North Vancouver',
+        state: 'British Columbia',
+    }
+}
