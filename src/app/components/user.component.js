@@ -46,8 +46,9 @@ var UserComponent = (function () {
 }());
 UserComponent = __decorate([
     core_1.Component({
+        moduleId: module.id,
         selector: 'user',
-        template: "\n    <h1>Hello {{ name }}</h1>\n    <p><strong>Email:</strong>  {{ email }}</p>\n    <p><strong>Address:</strong>  {{ address.street }} {{ address.city }} {{ address.state }}</p>\n    \n    \n    <button (click)=\"toggleHobbies()\">{{ showHobbies ? \"Hide Hobbies\" : \"Show Hobbies\" }}</button>\n    <div *ngIf=\"showHobbies\">\n        <h3>Hobbies</h3>\n        <ul>\n            <li *ngFor=\"let hobby of hobbies; let i = index\">\n                {{ hobby }} <button (click)=\"deleteHobby(i)\">X</button>\n            </li>\n        </ul>\n\n<form (submit)=\"addHobby(hobby.value)\">\n<label>Add Hobby: </label><br />\n<input type=\"text\" #hobby /><br />\n</form>\n    </div>\n    <hr />\n    <h3>Edit User</h3>\n    <form>\n        <label>Name:</label><br/>\n        <input type=\"text\" name=\"name\" [(ngModel)]=\"name\" /><br/>\n        <label>Email:</label><br/>\n                <input type=\"text\" name=\"email\" [(ngModel)]=\"email\" /><br/>\n        <label>Street:</label><br/>\n                <input type=\"text\" name=\"address.street\" [(ngModel)]=\"address.street\" /><br/>\n        <label>City:</label><br/>\n                <input type=\"text\" name=\"address.city\" [(ngModel)]=\"address.city\" /><br/>\n        <label>State:</label><br/>\n                <input type=\"text\" name=\"address.state\" [(ngModel)]=\"address.state\" /><br/>\n    </form>\n    <hr />\n    <h3>Posts</h3>\n    <div *ngFor=\"let post of posts\">\n        <h3>{{ post.title }}</h3>\n        <p>{{ post.body }}</p>\n    </div>\n    ",
+        templateUrl: 'user.component.html',
         providers: [posts_services_1.PostsService]
     }),
     __metadata("design:paramtypes", [posts_services_1.PostsService])
